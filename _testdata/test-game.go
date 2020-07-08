@@ -19,6 +19,7 @@ func main() {
 		"Introduction",
 		"intro",
 		m.Text("First there was a "),
+		m.Autoread(3, 1, false, "very ", "delightful "),
 		m.Link("fox.", "#fox"),
 	)
 	s.Screen(

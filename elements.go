@@ -38,6 +38,33 @@ func Text(content string) *textElement {
 	return el
 }
 
+type autoreadElement struct {
+	typer
+	wordsPerSecond int
+	minDuration    int
+	newlines       bool
+	parts          []string
+}
+
+func (a *autoreadElement) String() string {
+	if a.newlines {
+		return strings.Join(a.parts, "...\n\n")
+	} else {
+		return strings.Join(a.parts, "...")
+	}
+}
+
+func Autoread(wordsPerSecond, minDuration int, newlines bool, parts ...string) *autoreadElement {
+	el := &autoreadElement{
+		wordsPerSecond: wordsPerSecond,
+		minDuration:    minDuration,
+		newlines:       newlines,
+		parts:          parts,
+	}
+	el.elementType = "text"
+	return el
+}
+
 type headerElement textElement
 
 func (h *headerElement) String() string {
